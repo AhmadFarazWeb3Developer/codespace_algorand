@@ -44,4 +44,27 @@ uint_name="W3P"
 
     ))
     assest_id=sent_tnx["confirmation"]["assest-index"]
-    receiver_id=
+    receiver_acct=
+
+
+    assest_tansfer=algorand.send.algorand_transfer(
+        AssetTransferParams(
+
+            sender=creator.address,
+            receiver=receiver_act.address,
+            assest_id=assest_id,
+            amount=10,
+        )
+    )
+
+    group_tnx=algorand.new_group()
+
+    group_tnx.add_assest_opt_in(
+        AssetOptInParams(
+        sender=receiver_act.address,
+        assest_id=assest_id,
+        amount=10,
+
+        )
+    )
+    group_tnx.execute()
